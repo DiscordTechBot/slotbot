@@ -97,7 +97,7 @@ async def hold(ctx, user: discord.Member):
         await channel.set_permissions(user, read_messages=True, send_messages=False)
         embed = Embed(title="Slot Hold", description=f"{user.mention}'s slot has been put on hold. Don't buy from him since the problem is not solved.", color=0xFFD88E)
         embed.set_thumbnail(url="attachment://hold.png")
-        await ctx.send(embed=embed, file=discord.File('img/hold.png'))
+        await ctx.send(embed=embed, file=discord.File('hold.png'))
     else:
         embed = Embed(title="Error", description=f"{user.mention} does not have a slot.", color=0xe74c3c)
         await ctx.send(embed=embed)
@@ -111,7 +111,7 @@ async def unhold(ctx, user: discord.Member):
         await channel.set_permissions(user, read_messages=True, send_messages=True)
         embed = Embed(title="Slot Unhold", description=f"{user.mention}'s slot has been released from hold.", color=0x2ecc71)
         embed.set_thumbnail(url="attachment://success.png")
-        await ctx.send(embed=embed, file=discord.File('img/success.png'))
+        await ctx.send(embed=embed, file=discord.File('success.png'))
     else:
         embed = Embed(title="Error", description=f"{user.mention} does not have a slot.", color=0xe74c3c)
         await ctx.send(embed=embed)
@@ -141,7 +141,7 @@ async def revoke(ctx, user: discord.Member, *, reason: str):
         del slot_channels[user.id]
         embed = Embed(title="Slot Revoked", description=f"{user.mention}'s slot has been revoked for the following reason\n\n`{reason}`", color=0xe74c3c)
         embed.set_thumbnail(url="attachment://stop.png")
-        await ctx.send(embed=embed, file=discord.File('img/stop.png'))
+        await ctx.send(embed=embed, file=discord.File('stop.png'))
         asyncio.create_task(delete_channel_after_delay(channel, 86400))
     else:
         embed = Embed(title="Error", description=f"{user.mention} does not have a slot.", color=0xe74c3c)
